@@ -26,11 +26,11 @@ func Init() (*PoolConn, error) {
 	if wsPool == nil {
 		factory := func() (*recws.RecConn, error) {
 			SubscribeConn := &recws.RecConn{
-				KeepAliveTimeout: 10 * time.Second,
-				WriteTimeout:     time.Second,
-				ReadTimeout:      time.Second * 2,
+				KeepAliveTimeout: 30 * time.Second,
+				WriteTimeout:     30 *time.Second,
+				ReadTimeout:      time.Second * 30,
 				NonVerbose:       true,
-				HandshakeTimeout: time.Second}
+				HandshakeTimeout: 30 * time.Second}
 			SubscribeConn.Dial(wsEndPoint, nil)
 			return SubscribeConn, err
 		}
